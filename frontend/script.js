@@ -13,7 +13,7 @@ function displayProducts() {
     productList.innerHTML = '';
 
     // Hacer una solicitud GET para obtener los productos
-    fetch('http://localhost:3000/api/items')
+    fetch('http://backend:5000/api/items')
         .then(response => response.json())
         .then(products => {
             products.forEach((product) => {
@@ -59,7 +59,7 @@ function addOrEditProduct(e) {
 
         if (editingProductId) {
             // Si estamos editando un producto, hacemos una solicitud PUT
-            fetch(`http://localhost:3000/api/items/${editingProductId}`, {
+            fetch(`http://backend:5000/api/items/${editingProductId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ function addOrEditProduct(e) {
             .catch(err => console.error('Error al editar producto:', err));
         } else {
             // Si no estamos editando, agregamos un nuevo producto
-            fetch('http://localhost:3000/api/items', {
+            fetch('http://backend:5000/api/items', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ function addOrEditProduct(e) {
 
 // Eliminar un producto
 function deleteProduct(id) {
-    fetch(`http://localhost:3000/api/items/${id}`, {
+    fetch(`http://backend:5000/api/items/${id}`, {
         method: 'DELETE',
     })
     .then(() => {
